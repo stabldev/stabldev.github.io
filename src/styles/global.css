@@ -8,7 +8,7 @@
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-serif: "IBM Plex Serif", serif;
 
-  --color-foreground: #ffffff;
+  --color-base-content: #ffffff;
   --color-base-100: #2f2f2f;
   --color-base-200: #282828;
   --color-base-300: #1f1f1f;
@@ -17,9 +17,9 @@
 @layer base {
   * {
     /* only one outline */
-    @apply border-foreground/10 focus-visible:outline-1;
+    @apply border-base-content/10 focus-visible:outline-1;
   }
   body {
-    @apply bg-base-300 text-foreground;
+    @apply bg-base-300 text-base-content;
   }
 }
