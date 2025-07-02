@@ -18,7 +18,7 @@
   * {
     /* only one outline */
     @apply border-base-content/10 focus-visible:outline-1;
-    @apply decoration-base-content/75 underline-offset-8;
+    @apply decoration-base-content/75 decoration-2 underline-offset-8;
   }
   body {
     @apply bg-base-300 text-base-content;

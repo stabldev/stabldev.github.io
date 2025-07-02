@@ -12,18 +12,21 @@ const posts = await getCollection("__posts__");
   <div class="mx-auto mt-20 flex max-w-4xl flex-col gap-5 px-4">
     <h3 class="text-xl font-bold">Latest</h3>
     {
-      posts.map((blog) => (
-        <div class="flex flex-col gap-2">
-          <a href={`/${blog.id}`} class="hover:underline w-max">
-            <h2 class="font-serif text-2xl font-black md:text-3xl">
-              {blog.data.title}
-            </h2>
-          </a>
-          <span class="text-base-content/75">
-            Published {formatDate(blog.data.pubDate)}
-          </span>
-          <p class="text-base-content/75">{blog.data.description}</p>
-        </div>
+      posts.map((post, idx) => (
+        <>
+          <div class="flex flex-col gap-2">
+            <a href={`/${post.id}`} class="hover:underline w-max">
+              <h2 class="font-serif text-2xl font-black md:text-3xl">
+                {post.data.title}
+              </h2>
+            </a>
+            <span class="text-base-content/75 text-sm font-medium">
+              Published {formatDate(post.data.pubDate)}
+            </span>
+            <p class="text-base-content/75 mt-2">{post.data.description}</p>
+          </div>
+          {idx !== posts.length - 1 && <span class="w-full border" />}
+        </>
       ))
     }
   </div>
