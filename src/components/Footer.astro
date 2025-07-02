@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+const links = [
+  {
+    href: "https://github.com/stabldev",
+    name: "github",
+    text: "GitHub",
+  },
+  {
+    href: "https://x.com/stabldev",
+    name: "x",
+    text: "X",
+  },
+  {
+    href: "/rss.xml",
+    name: "rss",
+    text: "RSS",
+  },
+];
+---
+
+<footer
+  class="bg-base-200 border border-b-none max-w-5xl p-5 mx-auto flex gap-10"
+>
+  <div class="flex flex-col gap-2">
+    <h3 class="font-bold">Follow</h3>
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class="inline-flex items-center gap-2 text-base-content/75 w-max"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Icon name={link.name} class="size-4" />
+          <span class="text-sm font-medium">{link.text}</span>
+        </a>
+      ))
+    }
+  </div>
+  <div class="flex flex-col gap-2">
+    <h3 class="font-bold">Other</h3>
+    <a
+      href="/about"
+      class="inline-flex items-center gap-2 text-base-content/75 w-max"
+    >
+      <span class="text-sm font-medium">About</span>
+    </a>
+  </div>
+</footer>
