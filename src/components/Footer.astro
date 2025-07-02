@@ -3,32 +3,32 @@ import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
 ---
 
-<footer
-  class="bg-base-200 border border-b-none max-w-5xl p-5 mx-auto flex gap-10"
->
-  <div class="flex flex-col gap-2">
-    <h3 class="font-bold">Follow</h3>
-    {
-      siteConfig.links.map((link) => (
-        <a
-          href={link.href}
-          class="inline-flex items-center gap-2 text-base-content/75 w-max"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Icon name={link.iconName} class="size-4" />
-          <span class="text-sm font-medium">{link.text}</span>
-        </a>
-      ))
-    }
-  </div>
-  <div class="flex flex-col gap-2">
-    <h3 class="font-bold">Other</h3>
-    <a
-      href="/about"
-      class="inline-flex items-center gap-2 text-base-content/75 w-max"
-    >
-      <span class="text-sm font-medium">About</span>
-    </a>
+<footer class="bg-base-200 border-b-none mx-auto max-w-6xl border py-5">
+  <div class="mx-auto flex max-w-4xl gap-10">
+    <div class="flex flex-col gap-2">
+      <h3 class="font-bold">Follow</h3>
+      {
+        siteConfig.links.map((link) => (
+          <a
+            href={link.href}
+            class="text-base-content/75 inline-flex w-max items-center gap-2"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name={link.iconName} class="size-4" />
+            <span class="text-sm font-medium">{link.text}</span>
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex flex-col gap-2">
+      <h3 class="font-bold">Other</h3>
+      <a
+        href="/about"
+        class="text-base-content/75 inline-flex w-max items-center gap-2"
+      >
+        <span class="text-sm font-medium">About</span>
+      </a>
+    </div>
   </div>
 </footer>

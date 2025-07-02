@@ -2,24 +2,41 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="bg-base-100 mx-auto mt-20 flex h-75 max-w-5xl">
-  <div class="flex flex-1 flex-col gap-5 border border-r-0 p-5 pr-10">
-    <h2 class="font-serif text-4xl font-black">
-      Why Your Perfect Lighthouse Score Doesn't Mean Your Site is Fast
-    </h2>
-    <p class="text-base-content/75 line-clamp-2">
-      There are times when you need to completely remove sensitive files or
-      large binaries from your Git repository's history. Here's how to do it
-      properly.
-    </p>
-    <a href="" class="mt-auto inline-flex w-max items-center gap-2 font-medium">
-      Countinue reading
-      <Icon name="arrow-right" />
-    </a>
+<div class="bg-base-100 mx-auto mt-20 max-w-6xl gap-10 border">
+  <div class="mx-auto grid max-w-4xl grid-cols-5 divide-x">
+    <div class="col-span-3 mx-auto flex flex-1 flex-col gap-5 p-10 pl-0">
+      <h2 class="font-serif text-4xl font-black">
+        Why Your Perfect Lighthouse Score Doesn't Mean Your Site is Fast
+      </h2>
+      <p class="text-base-content/75">
+        There are times when you need to completely remove sensitive files or
+        large binaries from your Git repository's history. Here's how to do it
+        properly.
+      </p>
+      <a
+        href=""
+        class="mt-auto inline-flex w-max items-center gap-2 font-medium hover:underline"
+      >
+        Countinue reading
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+    <div class="col-span-2 flex flex-col justify-center gap-2 p-10 pr-0">
+      <h3 class="font-serif text-2xl font-bold">Newsletter</h3>
+      <h4 class="text-base-content/75 text-sm">
+        I run a newsletter about design, coding, ai and open source.
+      </h4>
+      <div class="flex h-10 items-center">
+        <input
+          type="email"
+          placeholder="your@email.com"
+          class="bg-base-content/10 outline-base-content/75 h-full w-50 border border-r-0 px-4 text-sm font-medium"
+        />
+        <button
+          class="bg-base-content/15 h-full border px-3 text-sm font-medium"
+          >Subscribe</button
+        >
+      </div>
+    </div>
   </div>
-  <img
-    class="aspect-square h-full object-cover"
-    src="https://suneeth.vercel.app/_next/image?url=https%3A%2F%2Ffiles.catbox.moe%2Fw7pa13.webp&w=1920&q=75"
-    alt="cover"
-  />
 </div>
