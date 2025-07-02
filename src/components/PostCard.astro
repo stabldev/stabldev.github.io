@@ -1,0 +1,19 @@
+---
+import { formatDate } from "@lib/utils";
+import type { CollectionEntry } from "astro:content";
+
+interface Props extends CollectionEntry<"__posts__"> {}
+const { id, data } = Astro.props;
+---
+
+<div class="flex flex-col gap-2">
+  <a href={`/${id}`} class="hover:underline w-max">
+    <h2 class="font-serif text-2xl font-black md:text-3xl">
+      {data.title}
+    </h2>
+  </a>
+  <span class="text-base-content/75 text-sm font-medium">
+    Published {formatDate(data.pubDate)}
+  </span>
+  <p class="text-base-content/75 mt-2">{data.description}</p>
+</div>
