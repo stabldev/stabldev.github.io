@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { type CollectionEntry } from "astro:content";
+
+interface Props extends CollectionEntry<"__posts__"> {}
+const { id, data } = Astro.props;
 ---
 
 <div class="bg-base-100 mx-auto mt-20 max-w-6xl gap-10 border">
@@ -10,15 +14,13 @@ import { Icon } from "astro-icon/components";
       class="mx-auto flex flex-1 flex-col gap-5 py-10 pr-0 pl-0 lg:col-span-3 lg:pr-10"
     >
       <h2 class="font-serif text-3xl font-black md:text-4xl">
-        Why Your Perfect Lighthouse Score Doesn't Mean Your Site is Fast
+        {data.title}
       </h2>
       <p class="text-base-content/75">
-        There are times when you need to completely remove sensitive files or
-        large binaries from your Git repository's history. Here's how to do it
-        properly.
+        {data.description}
       </p>
       <a
-        href=""
+        href={`/${id}`}
         class="mt-auto inline-flex w-max items-center gap-2 font-medium hover:underline"
       >
         Countinue reading

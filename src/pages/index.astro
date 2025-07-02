@@ -4,13 +4,11 @@ import Layout from "@layouts/Layout.astro";
 import { formatDate } from "@lib/utils";
 
 import { getCollection } from "astro:content";
-
 const posts = await getCollection("__posts__");
-console.log(posts);
 ---
 
 <Layout>
-  <HeroPost />
+  <HeroPost {...posts[0]} />
   <div class="mx-auto mt-20 flex max-w-4xl flex-col gap-5 px-4">
     <h3 class="text-xl font-bold">Latest</h3>
     {
