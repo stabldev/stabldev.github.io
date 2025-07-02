@@ -1,24 +1,32 @@
 ---
 import HeroPost from "@components/HeroPost.astro";
 import Layout from "@layouts/Layout.astro";
+import { formatDate } from "@lib/utils";
+
+import { getCollection } from "astro:content";
+
+const blogs = await getCollection("blog");
+console.log(blogs);
 ---
 
 <Layout>
   <HeroPost />
   <div class="mx-auto mt-20 flex max-w-4xl flex-col gap-5 px-4">
     <h3 class="text-xl font-bold">Latest</h3>
-    <div class="flex flex-col gap-2">
-      <a href="" class="hover:underline">
-        <h2 class="font-serif text-2xl font-black md:text-3xl">
-          Why Your Perfect Lighthouse Score Doesn't Mean Your Site is Fast
-        </h2>
-      </a>
-      <span class="text-base-content/75">Published Jul 2, 2025</span>
-      <p class="text-base-content/75">
-        There are times when you need to completely remove sensitive files or
-        large binaries from your Git repository's history. Here's how to do it
-        properly.
-      </p>
-    </div>
+    {
+      blogs.map((blog) => (
+        <div class="flex flex-col gap-2">
+          <a href={`/${blog.id}`} class="hover:underline w-max">
+            <h2 class="font-serif text-2xl font-black md:text-3xl">
+              {blog.data.title}
+            </h2>
+          </a>
+          <span class="text-base-content/75">
+            Published {formatDate(blog.data.pubDate)}
+          </span>
+          <p class="text-base-content/75">{blog.data.description}</p>
+        </div>
+      ))
+    }
   </div>
 </Layout>
