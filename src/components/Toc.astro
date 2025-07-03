@@ -1,0 +1,43 @@
+---
+import { type MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+let mainIdx = 0;
+let subIdx = 0;
+---
+
+<div class="bg-base-200 mt-10 mb-20 flex flex-col gap-2 border p-4">
+  <h3 class="font-serif text-xl font-black">Table of Contents:</h3>
+  <ul class="marker:text-base-content/75 flex list-disc flex-col gap-2 pl-4">
+    {
+      headings.map((h, idx) => {
+        let prefix = "";
+
+        if (h.depth === 2) {
+          mainIdx++;
+          subIdx = 0;
+          prefix = `${mainIdx}.`;
+        } else if (h.depth > 2) {
+          subIdx++;
+          prefix = `${mainIdx}.${subIdx}`;
+        }
+
+        return (
+          <li style={`margin-left: ${h.depth - 2}rem`}>
+            <a
+              href={`#${h.slug}`}
+              class="text-base-content/75 hover:underline sm:w-max"
+            >
+              {prefix} {h.text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
