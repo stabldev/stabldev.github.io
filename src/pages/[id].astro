@@ -46,9 +46,19 @@ const { Content, headings } = await render(post);
       }
     </div>
     <article
-      class={"prose prose-invert prose-blockquote:border-base-content/20 prose-pre:bg-base-200! prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-pre:m-0! prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl max-w-full [&>*]:mx-10"}
+      class={"prose prose-invert prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl max-w-full [&>*]:mx-10"}
     >
       <Content />
     </article>
   </div>
 </Layout>
+
+<style is:global>
+  .expressive-code {
+    margin-inline: 0;
+  }
+  .expressive-code .copy button {
+    border-radius: 0 !important;
+    transition-duration: 0.15s !important;
+  }
+</style>

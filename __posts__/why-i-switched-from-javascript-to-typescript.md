@@ -20,7 +20,7 @@ I hit a wall when I started working on a larger project. JS didn’t complain, b
 
 Here's a typical issue I faced:
 
-```js
+```js title=example.js
 function getUser(id) {
   return fetch(`/api/user/${id}`).then(res => res.json());
 }
