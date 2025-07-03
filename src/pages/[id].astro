@@ -1,0 +1,54 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { formatDate } from "@lib/utils";
+import { getCollection, getEntry, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("__posts__");
+  return posts.map((post) => ({
+    params: { id: post.id },
+  }));
+}
+
+const { id } = Astro.params;
+const post = await getEntry("__posts__", id);
+if (!post) {
+  throw new Error(`Could not find post no:${id}`);
+}
+
+const { Content, headings } = await render(post);
+---
+
+<Layout>
+  <div class="mx-auto max-w-4xl px-4">
+    <div
+      class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-4"
+    >
+      <h1 class="text-center font-serif text-5xl font-black">
+        {post.data.title}
+      </h1>
+      <span class="text-base-content/75"
+        >Published {formatDate(post.data.pubDate)}</span
+      >
+    </div>
+    <div class="m-10 mb-20 flex flex-col gap-2">
+      <h3 class="font-serif text-2xl font-black">Headings</h3>
+      {
+        headings.map((h, idx) => (
+          <a
+            href={`#${h.slug}`}
+            class="text-base-content/75 w-max hover:underline"
+            style={`margin-left: ${h.depth - 2}rem`}
+          >
+            {h.depth - 1}. {h.text}
+          </a>
+        ))
+      }
+    </div>
+    <article
+      class={"prose prose-invert prose-blockquote:border-base-content/20 prose-pre:bg-base-200! prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-pre:m-0! prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl max-w-full [&>*]:mx-10"}
+    >
+      <Content />
+    </article>
+  </div>
+</Layout>

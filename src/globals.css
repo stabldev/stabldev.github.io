@@ -3,6 +3,7 @@
 @import "@fontsource/inter/500.css";
 
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --font-serif: "Space Grotesk", sans-serif;
