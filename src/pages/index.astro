@@ -4,7 +4,9 @@ import PostCard from "@components/PostCard.astro";
 import Layout from "@layouts/Layout.astro";
 
 import { getCollection } from "astro:content";
-const posts = await getCollection("__posts__");
+const posts = (await getCollection("__posts__")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <Layout>
