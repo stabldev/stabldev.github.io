@@ -55,10 +55,12 @@ export default defineConfig({
       },
     }),
   ],
-  devToolbar: {
-    enabled: false,
-  },
   vite: {
     plugins: [tailwindcss()],
+  },
+  devToolbar: { enabled: false },
+  trailingSlash: "never",
+  build: {
+    format: "file",
   },
 });
