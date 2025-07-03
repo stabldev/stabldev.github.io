@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
@@ -8,7 +7,6 @@ import expressiveCode from "astro-expressive-code";
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    react(),
     icon(),
     expressiveCode({
       frames: { showCopyToClipboardButton: false },
