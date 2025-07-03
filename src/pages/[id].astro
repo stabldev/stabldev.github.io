@@ -1,6 +1,7 @@
 ---
 import Toc from "@components/Toc.astro";
 import Layout from "@layouts/Layout.astro";
+import EditOnGitHubBox from "@components/EditOnGitHubBox.astro";
 import { formatDate } from "@lib/utils";
 import { getCollection, getEntry, render } from "astro:content";
 
@@ -34,10 +35,11 @@ const { Content, headings } = await render(post);
     </div>
     <Toc {headings} />
     <article
-      class={"prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl max-w-full md:[&>*]:mx-10"}
+      class="prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
     >
       <Content />
     </article>
+    <EditOnGitHubBox filePath={post.filePath} />
   </div>
 </Layout>
 
@@ -45,8 +47,8 @@ const { Content, headings } = await render(post);
   .expressive-code {
     margin-inline: 0;
   }
-  .expressive-code .copy button {
+  /* .expressive-code .copy button {
     border-radius: 0 !important;
     transition-duration: 0.15s !important;
-  }
+  } */
 </style>
