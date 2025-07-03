@@ -1,8 +1,7 @@
 ---
-import Footer from "@components/Footer.astro";
+import SiteFooter from "@components/SiteFooter.astro";
 import Head from "@components/Head.astro";
-import Header from "@components/Header.astro";
-import { siteConfig } from "@config/site";
+import SiteHeader from "@components/SiteHeader.astro";
 import "@globals.css";
 ---
 
@@ -19,11 +18,11 @@ import "@globals.css";
     </slot>
   </head>
   <body class="flex flex-col">
-    <Header />
+    <SiteHeader />
     <main class="my-20 flex-1">
       <slot />
     </main>
-    <Footer />
+    <SiteFooter />
   </body>
 </html>
 

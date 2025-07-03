@@ -1,11 +1,11 @@
 ---
-import Toc from "@components/Toc.astro";
+import TOC from "@components/TOC.astro";
 import Layout from "@layouts/Layout.astro";
-import EditOnGitHubBox from "@components/EditOnGitHubBox.astro";
-import { formatDate } from "@lib/utils";
-import { getCollection, getEntry, render } from "astro:content";
+import FeedbackBox from "@components/FeedbackBox.astro";
 import Head from "@components/Head.astro";
+import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
+import { getCollection, getEntry, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("__posts__");
@@ -42,13 +42,13 @@ const { Content, headings } = await render(post);
         >Published {formatDate(post.data.pubDate)}</span
       >
     </div>
-    <Toc {headings} />
+    <TOC {headings} />
     <article
       class="prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
     >
       <Content />
     </article>
-    <EditOnGitHubBox filePath={post.filePath} />
+    <FeedbackBox filePath={post.filePath} />
   </div>
 </Layout>
 

@@ -1,5 +1,5 @@
 ---
-import HeroPost from "@components/HeroPost.astro";
+import HeroPostCard from "@components/HeroPostCard.astro";
 import PostCard from "@components/PostCard.astro";
 import Layout from "@layouts/Layout.astro";
 
@@ -10,7 +10,7 @@ const posts = (await getCollection("__posts__")).sort(
 ---
 
 <Layout>
-  <HeroPost {...posts[0]} />
+  <HeroPostCard {...posts[0]} />
   <div class="mx-auto mt-20 flex max-w-4xl flex-col gap-5 px-4">
     <h3 class="text-xl font-bold">Latest</h3>
     {
