@@ -24,20 +24,20 @@ const { Content, headings } = await render(post);
     <div
       class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-4"
     >
-      <h1 class="text-center font-serif text-5xl font-black">
+      <h1 class="text-center font-serif text-4xl font-black md:text-5xl">
         {post.data.title}
       </h1>
       <span class="text-base-content/75"
         >Published {formatDate(post.data.pubDate)}</span
       >
     </div>
-    <div class="m-10 mb-20 flex flex-col gap-2">
+    <div class="mt-10 mb-20 flex flex-col gap-2 md:mx-10">
       <h3 class="font-serif text-2xl font-black">Headings</h3>
       {
         headings.map((h, idx) => (
           <a
             href={`#${h.slug}`}
-            class="text-base-content/75 w-max hover:underline"
+            class="text-base-content/75 hover:underline sm:w-max"
             style={`margin-left: ${h.depth - 2}rem`}
           >
             {h.depth - 1}. {h.text}
@@ -46,7 +46,7 @@ const { Content, headings } = await render(post);
       }
     </div>
     <article
-      class={"prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl max-w-full [&>*]:mx-10"}
+      class={"prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl max-w-full md:[&>*]:mx-10"}
     >
       <Content />
     </article>
