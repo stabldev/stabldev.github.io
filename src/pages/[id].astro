@@ -4,6 +4,8 @@ import Layout from "@layouts/Layout.astro";
 import EditOnGitHubBox from "@components/EditOnGitHubBox.astro";
 import { formatDate } from "@lib/utils";
 import { getCollection, getEntry, render } from "astro:content";
+import Head from "@components/Head.astro";
+import { siteConfig } from "@config/site";
 
 export async function getStaticPaths() {
   const posts = await getCollection("__posts__");
@@ -22,6 +24,13 @@ const { Content, headings } = await render(post);
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <Head
+      title={post.data.title}
+      description={post.data.description}
+      url={`${siteConfig.url}/${id}`}
+    />
+  </Fragment>
   <div class="mx-auto max-w-4xl px-4">
     <div
       class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-4"

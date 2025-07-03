@@ -1,6 +1,8 @@
 ---
 import Footer from "@components/Footer.astro";
+import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
+import { siteConfig } from "@config/site";
 import "@globals.css";
 ---
 
@@ -11,7 +13,10 @@ import "@globals.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Stabldev</title>
+    <!-- Head component -->
+    <slot name="head">
+      <Head />
+    </slot>
   </head>
   <body class="flex flex-col">
     <Header />

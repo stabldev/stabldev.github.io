@@ -1,8 +1,9 @@
 ---
+import { siteConfig } from "@config/site";
 import { Icon } from "astro-icon/components";
 
 interface Props {
-  filePath: string;
+  filePath?: string;
 }
 
 const { filePath } = Astro.props;
@@ -15,7 +16,7 @@ const { filePath } = Astro.props;
     link below and pressing the pencil icon inside GitHub to edit it.
   </p>
   <a
-    href={`https://github.com/stabldev/stabldev.github.io/blob/main/${filePath}`}
+    href={`https://github.com/${siteConfig.repo}/blob/main/${filePath}`}
     class="mt-5 inline-flex w-max items-center gap-2 font-medium hover:underline"
     target="_blank"
     rel="noreferrer"
