@@ -12,6 +12,8 @@ const {
   description = siteConfig.description,
   url = siteConfig.url,
 } = Astro.props;
+
+const ogUrl = new URL(`${Astro.url.pathname}-og.png`, Astro.site).href;
 ---
 
 <title>{title}</title>
@@ -21,9 +23,15 @@ const {
 <meta property="og:type" content="website" />
 <meta property="og:url" content={url} />
 <meta property="og:description" content={description} />
-<!-- TODO: add og later -->
-<!-- <meta
-  property="og:image"
-  content="https://www.example.com/_astro/seo-banner.BZD7kegZ.webp"
-/>
-<meta property="og:image:alt" content="" /> -->
+<meta property="og:image" content={ogUrl} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content={siteConfig.title} />
+<meta property="og:locale" content="en_US" />
+<!-- twitter/x -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogUrl} />
+<meta name="twitter:image:alt" content={title} />
+<!-- canonical -->
+<link rel="canonical" href={url} />

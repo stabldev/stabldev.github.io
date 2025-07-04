@@ -7,6 +7,7 @@ import { expressiveCode } from "./src/integrations/expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://stabldev.github.io",
   integrations: [icon(), og(), expressiveCode()],
   vite: {
     plugins: [tailwindcss()],
