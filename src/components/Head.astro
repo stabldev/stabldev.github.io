@@ -13,7 +13,8 @@ const {
   url = siteConfig.url,
 } = Astro.props;
 
-const ogUrl = new URL(`${Astro.url.pathname}-og.png`, Astro.site).href;
+const pathname = Astro.url.pathname.replace(/\.html$/, "");
+const ogUrl = new URL(`${pathname}-og.png`, Astro.site).href;
 ---
 
 <title>{title}</title>
