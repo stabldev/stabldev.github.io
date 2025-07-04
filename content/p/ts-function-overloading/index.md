@@ -32,6 +32,8 @@ function getRandomChar(length?: number): string | string[] {
 
 Here this `getRandomChar` function returns one `string` if I dont give any argument(length). But if I do give an argument(length), it'll return an array of `string` (`string[]`).
 
+---
+
 ## What actually happens?
 
 When we call an overloaded function, TypeScript checks all the overloads and determine which signature should be used based on the argument.
@@ -55,6 +57,8 @@ const chars = getRandomChar(5); // chars is now a list of 5 random characters (s
 const err = getRandomChar("abc"); // shows ts error, because there is no handle for this case.
 ```
 
+---
+
 ## When to use and avoid
 
 Use function overloading when:
@@ -67,6 +71,8 @@ Avoid overloading when:
 
 - The arguments are dynamic and not predictable.
 - You're tempted to overload just to avoid writing seperate functions.
+
+---
 
 ## TL;DR
 
