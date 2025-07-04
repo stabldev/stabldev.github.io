@@ -52,7 +52,7 @@ def group_anagrams(strs: list[str]) -> list[list[str]]:
 print(group_anagrams(["act", "cat", "ate"]))
 ```
 
-This solutions has the Time Complexity of `O(m * n log n)` and the Space Complexity of `O(m * n)` where `m` is the number of strings and `n` is the length of the longest string.
+This solution has the Time Complexity of `O(m * n log n)` and the Space Complexity of `O(m * n)` where `m` is the number of strings and `n` is the length of the longest string.
 
 ### 2. HashTable
 
@@ -62,9 +62,9 @@ Instead we'll be using a list which we populate by index as the key.
 On each iteration through strings, we create a list of length `26` because that's the total count of letters in the alphabet.
 We can fill every slot with `0` and increment it whenever we see a letter which should in that index position.
 
-#### But, how do we determine the index position?
+### But, how do we determine the index position?
 
-We'll be going to find the index position of each character in each string by its `unicode` value. But, what is a unicode value?
+We will find the index position of each character in each string by its `unicode` value. But, what is a unicode value?
 
 > A Unicode value, also known as a code point, is a unique numerical representation assigned to a character in the Unicode Standard. It's essentially a numerical identifier that allows computers to consistently represent and manipulate text from various writing systems.
 
@@ -72,7 +72,7 @@ We will use the [`ord()`](https://docs.python.org/3.4/library/functions.html#ord
 
 We can find the index position of a character by substracting `a`'s unicode value from that `string`'s unicode value. Unicode value of `a` is `96`, it will be `unicode of string - unicode of a`.
 
-```py
+```py title=group-anagrams.py
 def group_anagrams(strs: list[str]) -> list[list[str]]:
     anagrams = {} # can use defaultdict
     
@@ -96,4 +96,4 @@ def group_anagrams(strs: list[str]) -> list[list[str]]:
 print(group_anagrams(["act", "cat", "ate"]))
 ```
 
-This solutions has the Time Complexity of `O(m * n)` and the Space Complexity of `O(m * n)` where `m` is the number of strings and `n` is the length of the longest string.
+This solution has the Time Complexity of `O(m * n)` and the Space Complexity of `O(m * n)` where `m` is the number of strings and `n` is the length of the longest string.
