@@ -2,12 +2,12 @@
 import { formatDate } from "@lib/utils";
 import type { CollectionEntry } from "astro:content";
 
-interface Props extends CollectionEntry<"__posts__"> {}
+interface Props extends CollectionEntry<"posts"> {}
 const { id, data } = Astro.props;
 ---
 
 <div class="flex flex-col gap-2">
-  <a href={`/${id}`} class="w-max hover:underline">
+  <a href={`/p/${id}`} class="w-max hover:underline">
     <h2 class="font-serif text-2xl font-black md:text-3xl">
       {data.title}
     </h2>

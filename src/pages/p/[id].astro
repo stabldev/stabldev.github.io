@@ -8,14 +8,14 @@ import { siteConfig } from "@config/site";
 import { getCollection, getEntry, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("__posts__");
+  const posts = await getCollection("posts");
   return posts.map((post) => ({
     params: { id: post.id },
   }));
 }
 
 const { id } = Astro.params;
-const post = await getEntry("__posts__", id);
+const post = await getEntry("posts", id);
 if (!post) {
   throw new Error(`Could not find post no:${id}`);
 }

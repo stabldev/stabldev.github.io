@@ -103,30 +103,23 @@ const render = (title: string, description: string) => ({
 export const og = (): AstroIntegration => ({
   name: "satori-og",
   hooks: {
-    "astro:build:done": async ({ dir, pages }) => {
-      const [spaceGrotesk, inter] = await Promise.all([
-        fs.readFile("public/fonts/space-grotesk-latin-700-normal.ttf"),
-        fs.readFile("public/fonts/inter-latin-400-normal.ttf"),
-      ]);
+    "astro:build:done": async ({ dir, pages, logger }) => {
+      try {
+        const [spaceGrotesk, inter] = await Promise.all([
+          fs.readFile("public/fonts/space-grotesk-latin-700-normal.ttf"),
+          fs.readFile("public/fonts/inter-latin-400-normal.ttf"),
+        ]);
 
-      const projectRoot = process.cwd();
-      const postsDir = path.join(projectRoot, "__posts__");
-      const postFiles = await fs.readdir(postsDir);
-      const postSlugs = new Set();
+        let ogGeneratedCount = 0;
+        for (const { pathname } of pages) {
+          if (!pathname.startsWith("/p")) continue;
 
-      // generate a set of valid post slugs
-      for (const file of postFiles) {
-        const slug = file.replace(/\.(md|mdx)$/, "");
-        postSlugs.add(slug);
-      }
+          const file = await Promise.any([
+            fs.readFile(`content/p/${pathname.slice(2, -1)}.md`),
+            fs.readFile(`content/p/${pathname.slice(2, -1)}.mdx`),
+          ]);
 
-      for (const page of pages) {
-        if (postSlugs.has(page.pathname)) {
-          const content = await fs.readFile(
-            path.join(postsDir, `${page.pathname}.md`),
-            "utf-8",
-          );
-          const { title, description } = parseFrontmatter(content).data;
+          const { title, description } = parseFrontmatter(file).data;
           const svg = await satori(render(title, description), {
             width: 1200,
             height: 630,
@@ -154,10 +147,17 @@ export const og = (): AstroIntegration => ({
           });
 
           await fs.writeFile(
-            `${dir.pathname}${page.pathname}-og.png`,
+            `${dir.pathname}${pathname}og.png`,
             resvg.render().asPng(),
           );
+
+          ogGeneratedCount++;
         }
+
+        logger.info(`Generated ${ogGeneratedCount} OpenGraph; images`);
+      } catch (err) {
+        logger.error("OpenGraph image generation failed");
+        throw err;
       }
     },
   },
