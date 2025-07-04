@@ -34,7 +34,9 @@ Here this `getRandomChar` function returns one `string` if I dont give any argum
 
 ## What actually happens?
 
-When we call an overloaded function, TypeScript checks all the overloads and determine which signature should be used based on the argument. First we `define` all possible cases with the type of arguments and return type as well, then we define the last function which `handles` all the possible cases which we've defined before, this is where we will do the logic based on the arguments.
+When we call an overloaded function, TypeScript checks all the overloads and determine which signature should be used based on the argument.
+
+First we `define` all possible cases with the type of arguments and return type as well, then we define the last function which `handles` all the possible cases which we've defined before, this is where we will do the logic based on the arguments.
 
 ```ts
 function getRandomChar(): string;
