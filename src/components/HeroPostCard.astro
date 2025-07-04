@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { type CollectionEntry } from "astro:content";
 
-interface Props extends CollectionEntry<"__posts__"> {}
+interface Props extends CollectionEntry<"posts"> {}
 const { id, data } = Astro.props;
 ---
 
@@ -20,7 +20,7 @@ const { id, data } = Astro.props;
         {data.description}
       </p>
       <a
-        href={`/${id}`}
+        href={`/p/${id}`}
         class="mt-auto inline-flex w-max items-center gap-2 font-medium hover:underline"
       >
         Countinue reading
