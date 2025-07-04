@@ -3,11 +3,13 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
+import { og } from "./src/integrations/og";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     icon(),
+    og(),
     expressiveCode({
       frames: { showCopyToClipboardButton: false },
       styleOverrides: {
