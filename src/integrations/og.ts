@@ -112,11 +112,11 @@ export const og = (): AstroIntegration => ({
 
         let ogGeneratedCount = 0;
         for (const { pathname } of pages) {
-          if (!pathname.startsWith("/p")) continue;
+          if (!pathname.startsWith("p/")) continue;
 
           const file = await Promise.any([
-            fs.readFile(`content/p/${pathname.slice(2, -1)}.md`),
-            fs.readFile(`content/p/${pathname.slice(2, -1)}.mdx`),
+            fs.readFile(`content/p/${pathname.slice(2, -1)}/index.md`),
+            fs.readFile(`content/p/${pathname.slice(2, -1)}/index.mdx`),
           ]);
 
           const { title, description } = parseFrontmatter(file).data;
