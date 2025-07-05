@@ -21,6 +21,7 @@ if (!post) {
 }
 
 const { Content, headings } = await render(post);
+const filteredHeadings = headings.filter((h) => h.depth <= 3);
 ---
 
 <Layout>
@@ -42,7 +43,7 @@ const { Content, headings } = await render(post);
         >Published {formatDate(post.data.pubDate)}</span
       >
     </div>
-    <TOC {headings} />
+    <TOC headings={filteredHeadings} />
     <article
       class="prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-1 prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
     >

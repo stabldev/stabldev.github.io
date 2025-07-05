@@ -62,7 +62,7 @@ Instead we'll be using a list which we populate by index as the key.
 On each iteration through strings, we create a list of length `26` because that's the total count of letters in the alphabet.
 We can fill every slot with `0` and increment it whenever we see a letter which should in that index position.
 
-### But, how do we determine the index position?
+#### But, how do we determine the index position?
 
 We will find the index position of each character in each string by its `unicode` value. But, what is a unicode value?
 
@@ -75,7 +75,7 @@ We can find the index position of a character by substracting `a`'s unicode valu
 ```py title=group-anagrams.py
 def group_anagrams(strs: list[str]) -> list[list[str]]:
     anagrams = {} # can use defaultdict
-    
+
     for s in strs:
         count = [0] * 26
 
@@ -89,7 +89,7 @@ def group_anagrams(strs: list[str]) -> list[list[str]]:
             anagrams[key].append(s)
         else:
             anagrams[key] = [s]
-    
+
     return list(anagrams.values())
 
 # output: [['act', 'cat'], ['ate']]
