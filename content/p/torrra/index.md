@@ -6,8 +6,10 @@ pubDate: 2025-07-10
 
 ## What is torrra?
 
-`torrra` is a Python tool that lets you find and download torrents without leaving your CLI. 
+[torrra](https://github.com/stabldev/torrra) is a Python tool that lets you find and download torrents without leaving your CLI. 
 You can search for [torrents](https://en.wikipedia.org/wiki/Torrent) and select indexers based on what you want to search. And download it to your system using [libtorrent](https://en.wikipedia.org/wiki/Libtorrent).
+
+[GitHub](https://github.com/stabldev/torrra), [PyPI](https://pypi.org/project/torrra)
 
 ---
 
