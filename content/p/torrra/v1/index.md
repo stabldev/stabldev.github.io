@@ -1,6 +1,6 @@
 ---
 title: "Released: torrra v1.0.0"
-description: torrra v1.0.0 - my CLI torrent tool hits its first major release.
+description: From basic prompts to a full terminal interface - torrra v1.0.0 makes torrent searching and downloading seamless, right from your CLI.
 pubDate: 2025-07-18
 ---
 
