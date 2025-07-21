@@ -20,7 +20,7 @@ Essentially, it's a recipe for building and packaging software on Arch Linux.
 
 Example one:
 
-```bash title=PKGBUILD
+```sh frame="code" title="PKGBUILD"
 # Maintainer: stabldev <thestabldev@gmail.com> # maintainer information
 
 pkgname=torrra # package name
@@ -64,7 +64,7 @@ package() { # package steps
 First thing you need is an AUR account. But before that- let's create a ssh key-pair for authenticating into aur, just like how we do it for GitHub. 
 For that run this command:
 
-```bash
+```sh
 ssh-keygen -t ed25519 -C "aur" -f ~/.ssh/id_aur
 ```
 
@@ -74,7 +74,7 @@ ssh-keygen -t ed25519 -C "aur" -f ~/.ssh/id_aur
 
 You'll see output like:
 
-```bash
+```sh
 Generating public/private ed25519 key pair.
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
@@ -90,7 +90,7 @@ Your public key has been saved in /home/user/.ssh/id_aur.pub
 
 To get the contents, run:
 
-```bash
+```sh
 cat ~/.ssh/id_aur.pub
 ```
 
@@ -98,13 +98,13 @@ cat ~/.ssh/id_aur.pub
 
 Edit (or create) your SSH config file:
 
-```bash
+```sh
 nano ~/.ssh/config
 ```
 
 Add this block:
 
-```bash title=config
+```sh frame="code" title=".ssh/config"
 Host aur.archlinux.org
     User aur
     IdentityFile ~/.ssh/id_aur
@@ -114,7 +114,7 @@ Host aur.archlinux.org
 
 Finally, we can clone the AUR repo using:
 
-```bash
+```sh
 git clone ssh://aur@aur.archlinux.org/<package-name>.git
 ```
 
@@ -132,7 +132,7 @@ You can use [updpkgsums](https://man.archlinux.org/man/updpkgsums.8.env) for doi
 
 Run:
 
-```bash
+```sh
 updpkgsums
 ```
 
@@ -143,7 +143,7 @@ updpkgsums
 After PKGBUILD, `.SRCINFO` is the file we need. It is auto-generated from the details we specified on `PKGBUILD` file. 
 You can create it by running the command:
 
-```
+```sh
 makepkg --printsrcinfo > .SRCINFO
 ```
 
@@ -155,7 +155,7 @@ With these two files, you are almost done.
 
 Just like git, do commit the changes and push to `master` branch.
 
-```bash
+```sh
 git commit -m "chore: release v1.0.0"
 git push origin -u master
 ```
@@ -168,5 +168,4 @@ And that's it! You can see your package at https://aur.archlinux.org/packages/<p
 
  - Always run that command to auto-generate a `.SRCINFO` after everytime you update `PKGBUILD`.
  - If you've changed something on the build file, like dependencies- then increment the `pkgrel` number from the build file to force a new update.
- - Aur only supports `master` branch.
  - Don't update `sha256sums` field manually, use `updpkgsums` to auto-update it.
