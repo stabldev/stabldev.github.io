@@ -59,13 +59,13 @@ You can see a ton of production examples over at the [Satori Playground](https:/
 To generate the code with Satori, you simply need to execute the following code.
 
 ```ts
-import satori from "satori"
+import satori from "satori";
 
 const svg = await satori(renderSchema, {
-    // Add options here
-    // For example to embed fonts or set a fixed width & height
-    // View all options add https://github.com/vercel/satori
-})
+  // Add options here
+  // For example to embed fonts or set a fixed width & height
+  // View all options add https://github.com/vercel/satori
+});
 ```
 
 This code generates a string of SVG code.
@@ -88,7 +88,7 @@ This way, you can let the site generator handle all the complicated functionalit
 Create an integration in your Astro project by creating a file named `og.ts` in the `src/integrations` directory.
 And add the following code:
 
-```ts
+```ts title=src/integrations/og.ts
 export const og = (): AstroIntegration => ({
   name: "satori-og",
   hooks: {
@@ -157,18 +157,18 @@ This is a custom Astro integration named `satori-og` with hooks that runs after 
 
 Whats happening here, step by step:
 
-* Load fonts buffer from the file.
-* Iterate through all pages after `p/` endpoint (optional).
-* Read file content and parse metadata using [gray-matter](https://github.com/jonschlinkert/gray-matter).
-* Render SVG using `satori` and pass font details.
-* Save renderd PNG using [ReSVG-JS](https://github.com/thx/resvg-js) to the public dir as `.../og.png`.
-* Print build information.
+- Load fonts buffer from the file.
+- Iterate through all pages after `p/` endpoint (optional).
+- Read file content and parse metadata using [gray-matter](https://github.com/jonschlinkert/gray-matter).
+- Render SVG using `satori` and pass font details.
+- Save renderd PNG using [ReSVG-JS](https://github.com/thx/resvg-js) to the public dir as `.../og.png`.
+- Print build information.
 
 ### Configure Integration
 
 Add `og` integration in the Astro integrations.
 
-```mjs title=astro.config.mjs
+```js title=astro.config.mjs
 import { og } from "./src/integrations/og"
 
 export default defineConfig({
@@ -182,25 +182,23 @@ Finally, we need to add the path of generated image in the `head` tag.
 
 ```astro title=Head.astro
 ---
-import { siteConfig } from "@config/site"
+import { siteConfig } from "@config/site";
 
 interface Props {
-  title?: string
-  description?: string
+  title?: string;
+  description?: string;
 }
 
-const {
-  title = siteConfig.title,
-  description = siteConfig.description,
-} = Astro.props
+const { title = siteConfig.title, description = siteConfig.description } =
+  Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(
   canonicalURL.pathname +
     (canonicalURL.pathname.endsWith("/") ? "" : "/") +
     "og.png",
   Astro.site,
-)
+);
 ---
 
 <!-- other meta-tags -->
