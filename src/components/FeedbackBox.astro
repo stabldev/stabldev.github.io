@@ -9,11 +9,12 @@ interface Props {
 const { filePath } = Astro.props;
 ---
 
-<div class="bg-base-100 flex flex-col gap-2 border p-5 md:mx-10">
+<div class="bg-base-200 flex flex-col gap-2 border p-5">
   <h4 class="font-serif text-xl font-black">Found a mistake?</h4>
   <p class="text-base-content/75">
     Every post is a Markdown file so contributing is simple as following the
-    link below and pressing the pencil icon inside GitHub to edit it.
+    link below and pressing the pencil icon inside GitHub to edit it and make a
+    PR.
   </p>
   <a
     href={`https://github.com/${siteConfig.repo}/blob/main/${filePath}`}
