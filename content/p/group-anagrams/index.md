@@ -19,6 +19,7 @@ Here is a brief introduction of the problem. You can see the original problem fr
 We've a list of words, we need to group the anagrams in a list and return everything inside another list. Basically like a list which contains a list of anagrams.
 
 Example:
+
 ```py
 Input: strs = ["act","pots","tops","cat","stop","hat"]
 
