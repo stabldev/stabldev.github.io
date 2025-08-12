@@ -2,9 +2,10 @@
 title: "Released: torrra v1.0.0"
 description: From basic prompts to a full terminal interface - torrra v1.0.0 makes torrent searching and downloading seamless, right from your CLI.
 pubDate: 2025-07-18
+tags: ["foss", "announcement"]
 ---
 
-When I first started building **torrra**, the goal was simple:  
+When I first started building **torrra**, the goal was simple:
 I wanted a fast, minimal way to search and download torrents right from the terminal - without bloat, without ads, and without needing to open a browser.
 
 The early versions used [rich](https://github.com/Textualize/rich) for output and [questionary](https://github.com/tmbo/questionary) for prompts. That got the job done, but I knew it could be better.
@@ -71,6 +72,6 @@ To everyone who tried the early versions and gave feedback (especially on Reddit
 
 If you try `torrra`, I’d love to hear your thoughts.
 
-PRs welcome.  
-Ideas welcome.  
+PRs welcome.
+Ideas welcome.
 Bugs… not welcome, but I’ll fix them :P

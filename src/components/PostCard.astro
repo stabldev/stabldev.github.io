@@ -13,6 +13,8 @@ const { id, data } = Astro.props;
     </h2>
   </a>
   <span class="text-base-content/75 text-sm font-medium">
+    <span class="text-xs font-bold uppercase">{`[ ${data.tags[0]} ]`}</span>
+    {" - "}
     Published {formatDate(data.pubDate)}
   </span>
   <p class="text-base-content/75 mt-2">{data.description}</p>

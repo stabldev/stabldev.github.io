@@ -2,6 +2,7 @@
 title: Python Virtual Environment Explained
 description: We'll cover the basics of virtual environments in this guide and how to use them. We will then take a closer look at how virtual environments actually work.
 pubDate: 2025-08-01
+tags: ["python", "topics"]
 ---
 
 ## What is a Virtual Environment

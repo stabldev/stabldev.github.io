@@ -2,6 +2,7 @@
 title: 49. Group Anagrams Explained
 description: Leetcode question no. 49 Group Anagrams explained in 2 different ways.
 pubDate: 2025-07-04
+tags: ["leetcode", "dsa", "python"]
 ---
 
 ## What is an Anagram?

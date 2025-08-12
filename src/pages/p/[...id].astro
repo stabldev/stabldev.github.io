@@ -36,12 +36,21 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
     <div
       class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-4"
     >
-      <h1 class="text-center font-serif text-4xl font-black md:text-5xl">
-        {post.data.title}
-      </h1>
       <span class="text-base-content/75"
         >Published {formatDate(post.data.pubDate)}</span
       >
+      <h1 class="text-center font-serif text-4xl font-black md:text-5xl">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center gap-2">
+        {
+          post.data.tags.map((tag) => (
+            <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs font-bold uppercase">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
     </div>
     <TOC headings={filteredHeadings} />
     <article

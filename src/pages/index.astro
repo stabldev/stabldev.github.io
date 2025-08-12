@@ -17,7 +17,7 @@ const posts = (await getCollection("posts")).sort(
       posts.map((post, idx) => (
         <Fragment>
           <PostCard {...post} />
-          {idx !== posts.length - 1 && <span class="w-full border" />}
+          {idx !== posts.length - 1 && <span class="w-full border-b" />}
         </Fragment>
       ))
     }
