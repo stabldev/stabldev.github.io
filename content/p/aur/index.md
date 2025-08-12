@@ -2,7 +2,7 @@
 title: How to Publish Packages to AUR
 description: Let's see how can we publish our packages to Arch User Repository (AUR) with best practices.
 pubDate: 2025-07-21
-tags: ["linux", "arch", "aur"]
+categories: ["linux", "arch", "aur"]
 ---
 
 ## What is AUR?

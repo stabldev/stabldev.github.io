@@ -44,9 +44,9 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
       </h1>
       <div class="flex items-center gap-2">
         {
-          post.data.tags.map((tag) => (
+          post.data.categories.map((category) => (
             <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs font-bold uppercase">
-              {tag}
+              {category}
             </span>
           ))
         }

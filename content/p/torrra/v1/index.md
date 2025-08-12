@@ -2,7 +2,7 @@
 title: "Released: torrra v1.0.0"
 description: From basic prompts to a full terminal interface - torrra v1.0.0 makes torrent searching and downloading seamless, right from your CLI.
 pubDate: 2025-07-18
-tags: ["foss", "announcement"]
+categories: ["foss", "announcement"]
 ---
 
 When I first started building **torrra**, the goal was simple:

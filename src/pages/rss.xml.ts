@@ -10,9 +10,7 @@ export const GET: APIRoute = async ({ site }) => {
     description: "A place where I write, build, and share all things dev.",
     site: site!,
     items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.pubDate,
-      description: post.data.description,
+      ...post.data,
       link: `/p/${post.id}/`,
     })),
   });

@@ -2,7 +2,7 @@
 title: torrra
 description: A Python tool that lets you find and download torrents without leaving your CLI.
 pubDate: 2025-07-10
-tags: ["foss", "release"]
+categories: ["foss", "release"]
 ---
 
 ## What is torrra?

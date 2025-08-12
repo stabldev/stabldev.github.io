@@ -2,7 +2,7 @@
 title: Function Overloading in TypeScript
 description: How function overloading in TypeScript helps you write flexible yet type-safe functions, with real-world examples and practical use cases.
 pubDate: 2025-07-04
-tags: ["typescript", "topics"]
+categories: ["typescript", "topics"]
 ---
 
 ## What is Function Overloading?
