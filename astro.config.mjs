@@ -13,6 +13,7 @@ export default defineConfig({
   devToolbar: { enabled: false },
   integrations: [icon(), og(), expressiveCode(), sitemap()],
   vite: {
+    // @ts-expect-error vite version conflict
     plugins: [tailwindcss()],
   },
 });
