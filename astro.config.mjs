@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import { og } from "./src/integrations/og";
 import { expressiveCode } from "./src/integrations/expressive-code";
 
 import sitemap from "@astrojs/sitemap";
@@ -11,7 +10,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://stabldev.github.io",
   devToolbar: { enabled: false },
-  integrations: [icon(), og(), expressiveCode(), sitemap()],
+  integrations: [icon(), expressiveCode(), sitemap()],
   vite: {
     // @ts-expect-error vite version conflict
     plugins: [tailwindcss()],
