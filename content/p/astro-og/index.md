@@ -1,6 +1,7 @@
 ---
 title: Dynamic Open Graph Images with Satori and Astro
 description: Open Graph Images are a great way to improve the social sharing experience of your website. In this post I'll show you how to create them and how to generate them dynamically with any static site generator, like Astro.
+categories: ["astro", "open graph", "satori"]
 ---
 
 ## What are Open Graph Images?
