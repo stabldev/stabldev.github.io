@@ -2,13 +2,13 @@
 import { siteConfig } from "@config/site";
 
 interface Props {
-	title?: string;
-	description?: string;
-	url?: string;
+  title?: string;
+  description?: string;
+  url?: string;
 }
 
 const { title = siteConfig.title, description = siteConfig.description } =
-	Astro.props;
+  Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---

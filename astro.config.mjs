@@ -8,11 +8,11 @@ import { expressiveCode } from "./src/integrations/expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://stabldev.github.io",
-	devToolbar: { enabled: false },
-	integrations: [icon(), expressiveCode(), sitemap()],
-	vite: {
-		// @ts-expect-error vite version conflict
-		plugins: [tailwindcss()],
-	},
+  site: "https://stabldev.github.io",
+  devToolbar: { enabled: false },
+  integrations: [icon(), expressiveCode(), sitemap()],
+  vite: {
+    // @ts-expect-error vite version conflict
+    plugins: [tailwindcss()],
+  },
 });
