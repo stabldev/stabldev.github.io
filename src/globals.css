@@ -6,22 +6,22 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-serif: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", sans-serif;
+	--font-serif: "Space Grotesk", sans-serif;
+	--font-sans: "Inter", sans-serif;
 
-  --color-base-content: #ffffff;
-  --color-base-100: #2f2f2f;
-  --color-base-200: #282828;
-  --color-base-300: #1f1f1f;
+	--color-base-content: #ffffff;
+	--color-base-100: #2f2f2f;
+	--color-base-200: #282828;
+	--color-base-300: #1f1f1f;
 }
 
 @layer base {
-  * {
-    /* only one outline */
-    @apply border-base-content/10 focus-visible:outline-1;
-    @apply decoration-base-content/75! decoration-2! underline-offset-8!;
-  }
-  body {
-    @apply bg-base-300 text-base-content;
-  }
+	* {
+		/* only one outline */
+		@apply border-base-content/10 focus-visible:outline-1;
+		@apply decoration-base-content/75! decoration-2! underline-offset-8!;
+	}
+	body {
+		@apply bg-base-300 text-base-content;
+	}
 }

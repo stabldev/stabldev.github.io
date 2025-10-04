@@ -1,23 +1,23 @@
 ---
-import TOC from "@components/TOC.astro";
-import Layout from "@layouts/Layout.astro";
+import { getCollection, getEntry, render } from "astro:content";
 import FeedbackBox from "@components/FeedbackBox.astro";
 import Head from "@components/Head.astro";
-import { formatDate } from "@lib/utils";
+import TOC from "@components/TOC.astro";
 import { siteConfig } from "@config/site";
-import { getCollection, getEntry, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { formatDate } from "@lib/utils";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-  return posts.map((post) => ({
-    params: { id: post.id },
-  }));
+	const posts = await getCollection("posts");
+	return posts.map((post) => ({
+		params: { id: post.id },
+	}));
 }
 
 const { id } = Astro.params;
 const post = await getEntry("posts", id);
 if (!post) {
-  throw new Error(`Could not find post no:${id}`);
+	throw new Error(`Could not find post no:${id}`);
 }
 
 const { Content, headings } = await render(post);
