@@ -15,36 +15,40 @@ const posts = (await getCollection("posts")).sort(
   <div
     class="mx-auto mt-10 md:mt-20 max-w-4xl px-4 grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-y-20 md:gap-x-20"
   >
-    <div class="flex flex-col gap-5 scroll-mt-5" id="whoami">
-      <div class="flex items-center gap-4">
-        <h3 class="text-base-content/75 text-sm font-bold uppercase">whoami</h3>
-        <span class="flex-1 border-b"></span>
-      </div>
-      <div class="flex md:flex-col gap-5">
-        <img
-          src="https://github.com/stabldev.png"
-          class="border w-1/3 md:w-auto shrink-0"
-        />
-        <p class="text-base-content/75">
-          <b>Hi, I'm Stabldev!</b>
-          <i>"I build software that stays built."</i> lol, nevermind.
-        </p>
-      </div>
-      <div class="flex flex-col gap-5">
-        <p class="text-base-content/75">
-          tbh, i like breaking and fixing things; usually in python or js/ts.
-          sometimes it’s just my arch install (which i break more than i’d like
-          to admit). ngl, it’s all part of the fun.
-        </p>
-        <a
-          href="https://github.com/stabldev"
-          target="_blank"
-          rel="noreferrer"
-          class="font-medium text-sm inline-flex items-center gap-2 text-base-content/75 py-1 px-1.5 border w-max bg-base-100"
-        >
-          GitHub
-          <Icon name="github" class="size-4" />
-        </a>
+    <div>
+      <div class="sticky top-5 flex flex-col gap-5" id="whoami">
+        <div class="flex items-center gap-4">
+          <h3 class="text-base-content/75 text-sm font-bold uppercase">
+            whoami
+          </h3>
+          <span class="flex-1 border-b"></span>
+        </div>
+        <div class="flex md:flex-col gap-5">
+          <img
+            src="https://github.com/stabldev.png"
+            class="border w-1/3 md:w-auto shrink-0"
+          />
+          <p class="text-base-content/75">
+            <b>Hi, I'm Stabldev!</b>
+            <i>"I build software that stays built."</i> lol, nevermind.
+          </p>
+        </div>
+        <div class="flex flex-col gap-5">
+          <p class="text-base-content/75">
+            tbh, i like breaking and fixing things; usually in python or js/ts.
+            sometimes it’s just my arch install (which i break more than i’d
+            like to admit). ngl, it’s all part of the fun.
+          </p>
+          <a
+            href="https://github.com/stabldev"
+            target="_blank"
+            rel="noreferrer"
+            class="font-medium text-sm inline-flex items-center gap-2 text-base-content/75 py-1 px-1.5 border w-max bg-base-100"
+          >
+            GitHub
+            <Icon name="github" class="size-4" />
+          </a>
+        </div>
       </div>
     </div>
     <div class="flex flex-col gap-5 col-span-2">

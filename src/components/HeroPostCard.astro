@@ -34,7 +34,9 @@ const { id, data } = Astro.props;
       <h4 class="text-base-content/75 text-sm">
         I run a newsletter about design, coding, ai and open source.
       </h4>
-      <div class="flex h-10 min-w-0 items-center">
+      <div
+        class="flex h-10 min-w-0 items-center pointer-events-none select-none opacity-50"
+      >
         <input
           type="email"
           placeholder="your@email.com"
