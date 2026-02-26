@@ -49,12 +49,16 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
         {post.data.title}
       </h1>
     </div>
-    <TOC headings={filteredHeadings} />
-    <article
-      class="prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-base-content/10 prose-pre:border prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
-    >
-      <Content />
-    </article>
+    <div class="relative">
+      <div class="absolute top-0 left-full w-max h-full ml-4">
+        <TOC headings={filteredHeadings} />
+      </div>
+      <article
+        class="prose prose-invert prose-headings:scroll-mt-24 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-base-content/10 prose-pre:border prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
+      >
+        <Content />
+      </article>
+    </div>
   </div>
 </Layout>
 

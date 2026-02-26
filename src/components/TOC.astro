@@ -7,37 +7,136 @@ interface Props {
 
 const { headings } = Astro.props;
 
-let mainIdx = 0;
-let subIdx = 0;
+// Only show depth 2 headings (first level sections)
+const tocHeadings = headings.filter((h) => h.depth === 2);
 ---
 
-<div class="bg-base-100 mt-10 flex flex-col gap-2 border p-4">
-  <h3 class="text-xl font-bold">Table of Contents:</h3>
-  <ul class="flex flex-col gap-2">
+<nav
+  id="toc-nav"
+  class="hidden xl:block sticky top-20"
+  aria-label="Table of Contents"
+>
+  <span
+    class="text-base-content/40 text-xs font-mono uppercase tracking-widest mb-4 block"
+  >
+    On this page
+  </span>
+  <ul class="flex flex-col gap-1 border-l">
     {
-      headings.map((h, idx) => {
-        let prefix = "";
-
-        if (h.depth === 2) {
-          mainIdx++;
-          subIdx = 0;
-          prefix = `${mainIdx}.`;
-        } else if (h.depth > 2) {
-          subIdx++;
-          prefix = `${mainIdx}.${subIdx}`;
-        }
-
-        return (
-          <li style={`margin-left: ${h.depth - 2}rem`}>
-            <a
-              href={`#${h.slug}`}
-              class="text-base-content/75 hover:underline sm:w-max"
-            >
-              {prefix}&nbsp;&nbsp;{h.text}
-            </a>
-          </li>
-        );
-      })
+      tocHeadings.map((h, idx) => (
+        <li>
+          <a
+            href={`#${h.slug}`}
+            data-toc-link
+            data-heading-slug={h.slug}
+            class:list={[
+              { "toc-link-active": idx === 0 },
+              "block py-1 pl-4 text-sm text-base-content/40 hover:text-base-content/75 border-l-2 border-transparent",
+            ]}
+          >
+            {h.text}
+          </a>
+        </li>
+      ))
     }
   </ul>
-</div>
+</nav>
+
+<style>
+  .toc-link-active {
+    color: var(--color-base-content) !important;
+    border-left-color: var(--color-base-content) !important;
+  }
+</style>
+
+<script>
+  function initTOC() {
+    const tocLinks =
+      document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]");
+    if (!tocLinks.length) return;
+
+    const headingSlugs = Array.from(tocLinks).map(
+      (link) => link.dataset.headingSlug!,
+    );
+    const headingElements = headingSlugs
+      .map((slug) => document.getElementById(slug))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!headingElements.length) return;
+
+    let activeSlug: string | null = null;
+
+    function setActive(slug: string | null) {
+      if (slug === activeSlug) return;
+      activeSlug = slug;
+
+      tocLinks.forEach((link) => {
+        if (link.dataset.headingSlug === slug) {
+          link.classList.add("toc-link-active");
+        } else {
+          link.classList.remove("toc-link-active");
+        }
+      });
+    }
+
+    // Use IntersectionObserver for performant scroll tracking
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the heading closest to the top of the viewport among those intersecting
+        // or use the last one that scrolled past
+        const visibleEntries = entries.filter((e) => e.isIntersecting);
+
+        if (visibleEntries.length > 0) {
+          // Pick the one closest to the top
+          const closest = visibleEntries.reduce((a, b) =>
+            a.boundingClientRect.top < b.boundingClientRect.top ? a : b,
+          );
+          setActive(closest.target.id);
+          return;
+        }
+
+        // If nothing is intersecting, find the last heading that scrolled past
+        let lastPast: HTMLElement | null = null;
+        for (const heading of headingElements) {
+          const rect = heading.getBoundingClientRect();
+          if (rect.top < 120) {
+            lastPast = heading;
+          }
+        }
+        if (lastPast) {
+          setActive(lastPast.id);
+        }
+      },
+      {
+        rootMargin: "-80px 0px -60% 0px",
+        threshold: 0,
+      },
+    );
+
+    headingElements.forEach((el) => observer.observe(el));
+
+    // Also handle scroll for cases between observations
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        let lastPast: HTMLElement | null = null;
+        for (const heading of headingElements) {
+          const rect = heading.getBoundingClientRect();
+          if (rect.top < 120) {
+            lastPast = heading;
+          }
+        }
+        if (lastPast) {
+          setActive(lastPast.id);
+        }
+        ticking = false;
+      });
+    });
+  }
+
+  // Run on page load and on Astro page transitions
+  document.addEventListener("astro:page-load", initTOC);
+  initTOC();
+</script>
