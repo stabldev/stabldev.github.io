@@ -93,10 +93,10 @@ I usually leave a comment explaining what was changed and why, especially if the
 
 ## Why This Works Well
 
-- [x] No duplicate PRs
-- [x] Original PR stays intact
-- [x] Clean history with shared credit
-- [x] Faster merges without waiting indefinitely
+- No duplicate PRs
+- Original PR stays intact
+- Clean history with shared credit
+- Faster merges without waiting indefinitely
 
 ---
 

@@ -1,6 +1,5 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
-import FeedbackBox from "@components/FeedbackBox.astro";
 import Head from "@components/Head.astro";
 import TOC from "@components/TOC.astro";
 import { siteConfig } from "@config/site";
@@ -20,7 +19,7 @@ if (!post) {
   throw new Error(`Could not find post no:${id}`);
 }
 
-const { Content, headings } = await render(post);
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
 const filteredHeadings = headings.filter((h) => h.depth <= 3);
 ---
 
@@ -34,23 +33,25 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
   </Fragment>
   <div class="mx-auto max-w-4xl px-4">
     <div
-      class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-4"
+      class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-2"
     >
-      <span class="text-base-content/75"
-        >Published {formatDate(post.data.pubDate)}</span
-      >
-      <h1 class="text-center font-serif text-4xl font-black md:text-5xl">
-        {post.data.title}
-      </h1>
       <div class="flex items-center gap-2">
         {
           post.data.categories.map((category) => (
-            <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs font-bold uppercase">
+            <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs font-bold uppercase font-mono">
               {category}
             </span>
           ))
         }
       </div>
+      <span class="text-base-content/75 font-mono uppercase"
+        >{formatDate(post.data.pubDate)} • {
+          remarkPluginFrontmatter.minutesRead
+        }</span
+      >
+      <h1 class="text-center font-serif text-4xl font-black md:text-5xl mt-2">
+        {post.data.title}
+      </h1>
     </div>
     <TOC headings={filteredHeadings} />
     <article
@@ -58,7 +59,6 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
     >
       <Content />
     </article>
-    <FeedbackBox filePath={post.filePath} />
   </div>
 </Layout>
 
