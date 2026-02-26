@@ -13,11 +13,8 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
-    "@fontsource-variable/mona-sans": "^5.2.8",
-    "@fontsource/inter": "^5.2.8",
     "@fontsource/mona-sans": "^5.2.8",
     "@fontsource/monaspace-neon": "^5.2.5",
-    "@fontsource/space-grotesk": "^5.2.10",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.14.1",
     "astro-expressive-code": "^0.41.3",
