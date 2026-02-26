@@ -35,15 +35,11 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
     <div
       class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-2"
     >
-      <div class="flex items-center gap-2">
-        {
-          post.data.categories.map((category) => (
-            <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs uppercase font-mono">
-              {category}
-            </span>
-          ))
-        }
-      </div>
+      <span
+        class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs uppercase font-mono"
+      >
+        {post.data.categories[0]}
+      </span>
       <span class="text-base-content/75 font-mono uppercase text-sm"
         >{formatDate(post.data.pubDate)} • {
           remarkPluginFrontmatter.minutesRead
