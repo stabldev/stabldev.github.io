@@ -38,24 +38,24 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
       <div class="flex items-center gap-2">
         {
           post.data.categories.map((category) => (
-            <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs font-bold uppercase font-mono">
+            <span class="text-base-content/75 bg-base-200 border px-2 py-1 text-xs uppercase font-mono">
               {category}
             </span>
           ))
         }
       </div>
-      <span class="text-base-content/75 font-mono uppercase"
+      <span class="text-base-content/75 font-mono uppercase text-sm"
         >{formatDate(post.data.pubDate)} • {
           remarkPluginFrontmatter.minutesRead
         }</span
       >
-      <h1 class="text-center font-serif text-4xl font-black md:text-5xl mt-2">
+      <h1 class="text-center text-4xl font-bold md:text-5xl mt-2">
         {post.data.title}
       </h1>
     </div>
     <TOC headings={filteredHeadings} />
     <article
-      class="prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-base-content/10 prose-pre:border prose-headings:font-serif prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
+      class="prose prose-invert prose-headings:scroll-mt-10 prose-blockquote:border-base-content/20 prose-pre:rounded-none prose-hr:border-base-content/10 prose-pre:border prose-p:text-base prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl my-20 max-w-full md:[&>*]:mx-10"
     >
       <Content />
     </article>
@@ -65,6 +65,10 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
 <style is:global>
   .expressive-code {
     margin-inline: 0;
+  }
+  .expressive-code .header {
+    font-family: monospace;
+    font-size: 0.75rem;
   }
   /* .expressive-code .copy button {
     border-radius: 0 !important;

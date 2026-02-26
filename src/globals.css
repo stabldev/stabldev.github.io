@@ -1,14 +1,16 @@
-@import "@fontsource/space-grotesk/600.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/700.css";
+@import "@fontsource/mona-sans/400.css";
+@import "@fontsource/mona-sans/500.css";
+@import "@fontsource/mona-sans/600.css";
+@import "@fontsource/mona-sans/700.css";
+@import "@fontsource/monaspace-neon/400.css";
+@import "@fontsource/monaspace-neon/600.css";
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-serif: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Mona Sans", sans-serif;
+  --font-mono: "MonaSpace Neon", monospace;
 
   --color-base-content: #ffffff;
   --color-base-100: #2f2f2f;
