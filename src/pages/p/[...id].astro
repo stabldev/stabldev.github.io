@@ -5,6 +5,7 @@ import TOC from "@components/TOC.astro";
 import { siteConfig } from "@config/site";
 import Layout from "@layouts/Layout.astro";
 import { formatDate } from "@lib/utils";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -32,6 +33,13 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
     />
   </Fragment>
   <div class="mx-auto max-w-4xl px-4">
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 uppercase font-mono text-xs text-base-content/75"
+    >
+      <Icon name="arrow-right" class="scale-x-[-1] size-4" />
+      Back to Home
+    </a>
     <div
       class="mx-auto flex max-w-2xl flex-col items-center justify-center gap-2"
     >
@@ -58,6 +66,21 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
       >
         <Content />
       </article>
+    </div>
+    <div class="flex flex-col items-center gap-4">
+      <button
+        class="flex items-center gap-2 uppercase font-mono text-sm cursor-pointer"
+      >
+        Share
+        <Icon name="link" class="size-4" />
+      </button>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 uppercase font-mono text-xs text-base-content/75"
+      >
+        <Icon name="arrow-right" class="scale-x-[-1] size-4" />
+        Back to Home
+      </a>
     </div>
   </div>
 </Layout>
