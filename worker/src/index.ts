@@ -12,7 +12,41 @@
  */
 
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    return new Response("Hello World!");
+  async fetch(
+    request: Request,
+    env: Env,
+    _ctx: ExecutionContext,
+  ): Promise<Response> {
+    const url = new URL(request.url);
+
+    // get the value of the key
+    if (request.method === "GET") {
+      const key = url.searchParams.get("key");
+      if (!key) {
+        return new Response("Missing key", { status: 400 });
+      }
+
+      const value = await env.REACTIONS.get(key);
+      if (!value) {
+        return new Response("Not found", { status: 404 });
+      }
+      return new Response(value);
+    }
+
+    // increment the value of the key
+    if (request.method === "POST") {
+      const key = url.searchParams.get("key");
+      if (!key) {
+        return new Response("Missing key", { status: 400 });
+      }
+
+      const value: number =
+        parseInt((await env.REACTIONS.get(key)) || "0", 10) + 1;
+      await env.REACTIONS.put(key, value.toString());
+      return new Response(value.toString());
+    }
+
+    // only "GET" and "POST" are allowed
+    return new Response("Method not allowed", { status: 405 });
   },
 } satisfies ExportedHandler<Env>;
