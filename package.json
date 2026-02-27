@@ -11,16 +11,21 @@
     "lint:fix": "biome check --write ."
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@fontsource/mona-sans": "^5.2.8",
     "@fontsource/monaspace-neon": "^5.2.5",
     "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.14.1",
     "astro-expressive-code": "^0.41.3",
     "astro-icon": "^1.1.5",
     "gray-matter": "^4.0.3",
     "mdast-util-to-string": "^4.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "reading-time": "^1.5.0",
     "tailwindcss": "^4.1.17"
   },

@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import Head from "@components/Head.astro";
+import PostReaction from "@components/PostReaction";
 import TOC from "@components/TOC.astro";
 import { siteConfig } from "@config/site";
 import Layout from "@layouts/Layout.astro";
@@ -67,8 +68,10 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
         <Content />
       </article>
     </div>
+    <PostReaction slug={post.id} client:load />
     <div class="flex flex-col items-center gap-4">
       <button
+        hidden
         class="flex items-center gap-2 uppercase font-mono text-sm cursor-pointer"
       >
         Share

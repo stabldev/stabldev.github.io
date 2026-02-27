@@ -1,5 +1,4 @@
-// @ts-check
-
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
@@ -11,7 +10,7 @@ import { remarkReadingTime } from "./src/lib/remark-reading-time";
 export default defineConfig({
   site: "https://stabldev.github.io",
   devToolbar: { enabled: false },
-  integrations: [icon(), expressiveCode(), sitemap()],
+  integrations: [icon(), expressiveCode(), sitemap(), react()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
