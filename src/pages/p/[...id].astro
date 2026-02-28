@@ -68,6 +68,13 @@ const filteredHeadings = headings.filter((h) => h.depth <= 3);
         <Content />
       </article>
     </div>
+    <div class="flex items-center gap-1 mb-10 mx-50">
+      <span class="w-full border-b"></span>
+      <span class="size-2 shrink-0 bg-base-100"></span>
+      <span class="size-4 shrink-0 bg-base-100"></span>
+      <span class="size-2 shrink-0 bg-base-100"></span>
+      <span class="w-full border-b"></span>
+    </div>
     <PostReaction slug={post.id} client:load />
     <div class="flex flex-col items-center gap-4">
       <button
