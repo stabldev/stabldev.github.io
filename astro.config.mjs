@@ -1,3 +1,4 @@
+import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -10,7 +11,17 @@ import { remarkReadingTime } from "./src/lib/remark-reading-time";
 export default defineConfig({
   site: "https://stabldev.github.io",
   devToolbar: { enabled: false },
-  integrations: [icon(), expressiveCode(), sitemap(), react()],
+  integrations: [
+    icon(),
+    expressiveCode(),
+    sitemap(),
+    react(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
